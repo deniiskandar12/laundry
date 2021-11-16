@@ -18,8 +18,10 @@ class UserController extends Controller
     public function addUser(Request $request)
     {
         $user = new User();
-        $user->email = $request->post('email');
-        $user->password = Hash::make($request->post('password'));
+        $user->nama = $request->post('nama');
+        $user->username = $request->post('username');
+        $user->no_hp = $request->post('no_hp');
+        $user->password = $request->post('password');
         $user->save();
 
         return redirect()->back()->with('success', 'Tambah User Berhasil');
@@ -29,8 +31,10 @@ class UserController extends Controller
     {
         $id = $request->post('id');
         $user = User::find($id);
-        $user->email = $request->post('email');
-        $user->password = Hash::make($request->post('password'));
+        $user->nama = $request->post('nama');
+        $user->username = $request->post('username');
+        $user->no_hp = $request->post('no_hp');
+        $user->password = $request->post('password');
         $user->save();
 
         return redirect()->back()->with('success', 'Edit User Berhasil');

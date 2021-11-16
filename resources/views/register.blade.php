@@ -23,8 +23,8 @@
           <div class="col-4 offset-4 text-area">
             <input type="text" class="form-control my-3" placeholder="Username" name="username">
             <input type="text" class="form-control my-3" placeholder="Nama" name="nama">
+            <input type="text" class="form-control my-3" placeholder="No. Hp" name="no_hp">
             <input type="password" class="form-control my-3" placeholder="Password" name="password">
-            <input type="password" class="form-control my-3" placeholder="Re-Password">
           </div>
           <div class="col-2 offset-5 text-center">
             <button type="submit" class="btn btn-primary mb-4" style="background-color: #7749F8; ">Daftar</button><br>

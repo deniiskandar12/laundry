@@ -10,26 +10,6 @@
         </div>
     </div>
 </div>
-<!-- Pencarian Tanggal -->
-<div class="row">
-    <div class="col-sm-6 offset-6 mb-3">
-        <p>Mulai :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Akhir :</p>
-        <form action="" class="d-flex gap-5">
-            <div class="md-form md-outline input-with-post-icon datepicker">
-                <input placeholder="Select date" type="date" id="startdate" class="form-control">
-            </div>
-            <div class="md-form md-outline input-with-post-icon datepicker">
-                <input placeholder="Select date" type="date" id="startdate" class="form-control">
-            </div>
-            <button class="btn btn-primary" type="submit">Filter</button>
-        </form>
-        <!-- <form class="d-flex">
-        <input class="form-control me-2" id="startdate" type="search" placeholder="dd-mm-yyyy" aria-label="Search"> 
-        <input class="form-control me-2" id="enddate" type="search" placeholder="dd-mm-yyyy" aria-label="Search">
-        <button class="btn btn-primary" type="submit">Filter</button>
-      </form> -->
-    </div>
-</div>
 <!-- Tabel -->
 <div class="row">
     <div class="col-sm-12">
@@ -37,46 +17,102 @@
             <thead>
                 <tr>
                     <td>No.</td>
-                    <td>User</td>
+                    <td>Nama</td>
                     <td>Jenis</td>
                     <td>Qty</td>
                     <td>Harga</td>
                     <td>Masuk</td>
                     <td>Alamat</td>
                     <td>Status</td>
-                    <td>Detail</td>
+                    <td>Action</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach($orders as $index => $order)
                 <tr>
                     <th scope="row">{{$index+1}}</th>
-                    <td>Deni</td>
+                    <td id="id" class="d-none">{{$order->orderId}}</td>
+                    <td>{{$order->nama}}</td>
                     <td>{{$order->jenis}}</td>
-                    <td>{{$order->qty}}Kg</td>
-                    <td>Rp. {{$order->harga}}</td>
-                    <td>{{$order->created_at}}</td>
-                    <td>Jalan Kenanga Barat no 3</td>
-                    <td>Proses</td>
-                    <td><a href="/admin/detail-pesanan">Lihat</a></td>
+                    <td id="qty">{{$order->qty}} Kg</td>
+                    <td id="harga">Rp. {{$order->harga}}</td>
+                    <td>{{$order->tanggal}}</td>
+                    <td>{{$order->alamat}}</td>
+                    <td id="status">{{$order->status}}</td>
+                    <td>
+                        <button class="btn btn-light btn-sm btn-edit" data-bs-toggle="modal" data-bs-target="#editOrder" value={{$index}}>
+                            <img src="{{ asset('img/edit.png') }}" alt="">
+                        </button>
+                        <form action="{{ route('delete_order') }}" method="POST" class="d-inline">
+                            @csrf
+                            <input type="hidden" name="id" value={{$order->orderId}}>
+                            <button type="submit" class="btn btn-light btn-sm">
+                                <img src="{{ asset('img/delete.png') }}" alt="">
+                            </button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
-
             </tbody>
-            <tfoot>
-
-            </tfoot>
         </table>
-        <!-- Pagination -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+
+
     </div>
 </div>
+
+<!-- Edit -->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Modal -->
+        <div class="modal fade" id="editOrder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Pesanan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('edit_order') }}" method="POST">
+                            @csrf
+                            <input id="edit-id" type="hidden" name="id">
+                            <input id="edit-qty" type="number" class="form-control mb-4" name="qty" placeholder="Berat..." required>
+                            <input id="edit-harga" type="number" class="form-control mb-4" name="harga" placeholder="Harga..." required>
+                            <p>Status</p>
+                            <select id="edit-status" class="form-select" aria-label="jenis_cucian_select" name="status">
+                                <option value="Dihitung">Dihitung</option>
+                                <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
+                                <option value="Dikerjakan">Dikerjakan</option>
+                                <option value="Selesai">Selesai</option>
+                            </select>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        // on modal show edit
+        $(".btn-edit").click(function() {
+            var index = $(this).val();
+            var row = $(this).closest("tr")
+            var id = row.find("#id").text();
+            var qty = row.find("#qty").text();
+            var harga = row.find("#harga").text();
+            var status = row.find("#status").text();
+
+            console.log(id)
+            $('#edit-id').val(id);
+            $('#edit-harga').val(harga.substring(4, harga.length));
+            $('#edit-qty').val(qty.substring(0, qty.length - 3));
+            $('#edit-status').val(status);
+        });
+
+    })
+</script>
 @endsection

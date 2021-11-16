@@ -36,6 +36,9 @@ class Order extends Model
 		'user_id',
 		'jenis',
 		'qty',
-		'harga'
+		'harga',
+		'alamat',
+		'status',
+		'tanggal'
 	];
 }

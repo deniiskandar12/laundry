@@ -7,8 +7,7 @@
                 <img src="{{ asset('img/user.jpg') }}" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h3 class="card-title">Data User</h3>
-                    <p class="card-text">Halo Admin Markonah!, Selamat Datang di Halaman Dashboard</p>
-                    <p class="card-text">Last updated 3 mins ago</p>
+                    <p class="card-text">Halo Admin!, Selamat Datang di Halaman Data Pesanan</p>
                 </div>
             </div>
         </div>

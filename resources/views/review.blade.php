@@ -2,47 +2,19 @@
 @section('content')
 
 <!-- review -->
-    <div class="card text-white bg-light">
-        <h5 class="card-header bg-info">Review</h5>
+<div class="card text-white bg-light">
+    <h5 class="card-header bg-info">Review</h5>
 
-        <div class="card-body text-dark mt-5 mx-5 rounded" style="background: #E5E5E5">
-            <h5 class="card-title">Primary card title</h5>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-
-        <div class="card-body text-dark mt-5 mx-5 rounded" style="background: #E5E5E5">
-            <h5 class="card-title">Primary card title</h5>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-body text-dark mt-5 mx-5 rounded" style="background: #E5E5E5">
-            <h5 class="card-title">Primary card title</h5>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-
-        <div class="card-body text-dark mb-5 mt-5 mx-5 rounded" style="background: #E5E5E5">
-            <h5 class="card-title">Primary card title</h5>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>    
+    @foreach($reviews as $review)
+    {{$nilai = $review->nilai}}
+    <div class="card-body text-dark my-2 mx-5 rounded" style="background: #E5E5E5">
+        <h5 class="card-title">{{$review->nama}}</h5>
+        @for ($i = 0; $i < $nilai; $i++) <span class="fa fa-star checked"></span>@endfor
+            @for ($i = 0; $i < 5 - $nilai; $i++) <span class="fa fa-star"></span>@endfor
+                <p class="card-text">{{$review->tanggapan}}</p>
+                <p class="card-text text-success">{{$review->tanggal}}</p>
+    </div>
+    @endforeach
+</div>
 
 @endsection

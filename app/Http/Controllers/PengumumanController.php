@@ -2,22 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
 {
     public function showPengumuman()
     {
-        $pengumuman = Pengumuman::all();
+        $pengumuman = Announcement::all();
 
-        return view('pengumuman', ['pengumuman' => $pengumuman]);
+        return view('pengumuman', ['pengumuman' => $pengumuman, 'title' => 'Pengumuman']);
+    }
+
+    public function showDataPengumuman()
+    {
+        $pengumuman = Announcement::all();
+
+        return view('admin/data_pengumuman', ['pengumuman' => $pengumuman, 'title' => 'Pengumuman']);
     }
 
     public function addPengumuman(Request $request)
     {
-        $pengumuman = new Pengumuman();
-        $pengumuman->pengumuman = $request->post('pengumuman');
-        $pengumuman->tanggal = date('Y-m-d');
+        $pengumuman = new Announcement();
+        $pengumuman->judul = $request->post('judul');
+        $pengumuman->isi = $request->post('isi');
+        $pengumuman->tanggal = $request->post('tanggal');
         $pengumuman->save();
 
         return redirect()->back()->with('success', 'Tambah Pengumuman Berhasil');
@@ -26,8 +35,10 @@ class PengumumanController extends Controller
     public function editPengumuman(Request $request)
     {
         $id = $request->post('id');
-        $pengumuman = Pengumuman::find($id);
-        $pengumuman->pengumuman = $request->post('pengumuman');
+        $pengumuman = Announcement::find($id);
+        $pengumuman->judul = $request->post('judul');
+        $pengumuman->isi = $request->post('isi');
+        $pengumuman->tanggal = $request->post('tanggal');
         $pengumuman->save();
 
         return redirect()->back()->with('success', 'Edit Pengumuman Berhasil');
@@ -36,7 +47,7 @@ class PengumumanController extends Controller
     public function deletePengumuman(Request $request)
     {
         $id = $request->post('id');
-        $pengumuman = Pengumuman::find($id);
+        $pengumuman = Announcement::find($id);
         $pengumuman->delete();
 
         return redirect()->back()->with('success', 'Hapus Pengumuman Berhasil');

@@ -9,8 +9,7 @@
                 <img src="{{ asset('img/main.jpg') }}" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h3 class="card-title">Dashboard</h3>
-                    <p class="card-text">Halo Admin Markonah!, Selamat Datang di Halaman Dashboard</p>
-                    <p class="card-text">Last updated 3 mins ago</p>
+                    <p class="card-text">Halo Admin!, Selamat Datang di Halaman Dashboard</p>
                 </div>
             </div>
         </div>
@@ -37,7 +36,7 @@
             </div>
         </div>
         <div class="col-sm-5 mt-5">
-        <div class="card shadow-lg">
+            <div class="card shadow-lg">
                 <img src="{{ asset('img/pengumumanmain.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><b>Pengumuman</b></h5>
@@ -53,8 +52,8 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 </div>
 
 
