@@ -15,6 +15,15 @@ class OrderController extends Controller
 
         return view('admin/data_pesanan', ['orders' => $orders, "title" => "Data Pesanan"]);
     }
+    
+    public function index_laporan()
+    {
+        $report = Order::select('orders.id as orderId', 'month', 'total' )
+        ->orderBY('month','desc')
+        ->get();
+
+        return view('admin/laporan_penjualan', ['orders' => $report, "title" => "Laporan Penjualan"]);
+    }
 
     public function add(Request $request)
     {
