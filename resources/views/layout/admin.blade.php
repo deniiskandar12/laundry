@@ -44,6 +44,9 @@
             <a class="nav-link" href="/admin/data-pengumuman">Data Pengumuman</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/admin/laporan-penjualan">Laporan Penjualan</a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('logout') }}" class="btn btn-danger btn-sm">Log out</a>
           </li>
         </ul>
