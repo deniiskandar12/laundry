@@ -1,0 +1,29 @@
+video {
+    position: fixed;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50 %, -50%);
+}
+.login-form {
+    height: 310px;
+    width: 270px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: red;
+    box-shadow: 0 0 10px rebeccapurple;
+    color: white;
+    padding-top: 60px;
+}
+
+.login h3 {
+    letter-spacing: 1px;
+}

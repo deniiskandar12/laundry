@@ -26,7 +26,7 @@ Route::get('/', function () {
         return view('/home', ["title" => "Home"]);
     else {
         if (session('role') == 'admin')
-            return redirect('/admin/dashboard');
+            return redirect('/admin/data-pesanan');
         else {
 
             return redirect('/user/dashboard');
