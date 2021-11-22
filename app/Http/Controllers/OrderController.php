@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -14,6 +16,16 @@ class OrderController extends Controller
             ->get();
 
         return view('admin/data_pesanan', ['orders' => $orders, "title" => "Data Pesanan"]);
+    }
+    
+    public function index_laporan()
+    {
+        $report = DB::table('orders')
+        ->select(DB::raw('MONTH(tanggal)'),DB::raw('SUM(SUM(harga)) OVER (PARTITION BY Year(tanggal), MONTH(tanggal))'))
+        ->groupBy('tanggal')
+        ->orderBy('tanggal','ASC')
+        ->get();
+        return view('admin/laporan_penjualan', ['reports' => $report, "title" => "Laporan Penjualan"]);
     }
 
     public function add(Request $request)
