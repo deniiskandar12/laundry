@@ -146,6 +146,8 @@ Route::get('/admin/dashboard', function () {
 
 Route::get('/admin/data-pesanan',  [OrderController::class, 'index']);
 
+Route::get('/admin/laporan-penjualan',  [OrderController::class, 'index_laporan']);
+
 Route::post('/admin/data-pesanan/delete',  [OrderController::class, 'delete'])->name('delete_order');
 
 Route::post('/admin/data-pesanan/edit',  [OrderController::class, 'update'])->name('edit_order');
