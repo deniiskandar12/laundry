@@ -9,36 +9,42 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="stylelogin.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
-  <title>Mama Laundry | {{ $title }} </title>
+  <link rel="stylesheet" href="login.css">
+  <title>Login | Mama Laundry</title>
 </head>
 
-<body style="background: #E5E5E5;">
-  <div class="container">
+<body>
+  <header>
+    <div class="view video-container">
+      <video src="bgvideo.mp4" autoplay muted loop></video>
+    </div>
     <div class="container">
-      <div class="row" style="margin-top: 150px;">
-        <form action="{{ route('login') }}" method="POST">
-          @csrf
-          <div class="col-4 offset-4 text-area">
-            <input type="text" class="form-control my-3" placeholder="Username" name="username">
-            <input type="password" class="form-control my-3" placeholder="Password" name="password">
+      <div class="row pt-5">
+        <div class="mx-auto col-xl-4 mb-5 mt-5 pt-5 shadow-lg bg-body rounded">
+          <div class="card">
+            <form action="{{ route('login') }}" method="POST">
+              @csrf
+              <div class="card-body">
+                <div class="text-center">
+                  <h2 class="mt-4"><strong>Masuk</strong></h2>
+                  <input required name="username" class="form-control mt-5 mb-4" type="text" placeholder="Username" aria-label="default input example">
+                  <input required name="password" class="form-control mb-4" type="password" placeholder="Password" aria-label="Password">
+                  <button type="submit" class="btn btn-primary mb-4">Masuk</button>
+                  <h6 class="mb-4"><strong>atau</strong></h6>
+                  <a href="/register">Daftar</a>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="col-2 offset-5 text-center">
-            <button type="submit" class="btn btn-primary" style="background-color: #7749F8; ">Masuk</button>
-            <p class="mt-3">Atau</p>
-            <a href="/register">Daftar</a>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
-    <nav class="navbar fixed-top navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="/" style="margin-left: 10%">Mama Laundry</a>
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1">Mama Laundry</span>
       </div>
     </nav>
-  </div>
-
+  </header>
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->

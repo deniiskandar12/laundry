@@ -12,23 +12,23 @@
 </div>
 <!-- Tabel -->
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-10 offset-1 ">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <td>No.</td>
                     <td>Bulan</td>
                     <td>Total</td>
-                    
                 </tr>
             </thead>
             <tbody>
-                @foreach($reports as $report)
+                @foreach($reports as $index => $report)
                 <tr>
-                    
-                    <td>{{$report->MONTH}}</td>
-                    <td id="harga">Rp. {{$report->SUM}}</td>
-                    
+
+                    <td id="harga">{{$index+1}}</td>
+                    <td id="harga">{{$report->month}}</td>
+                    <td id="harga">Rp. {{$report->harga}}</td>
+
                 </tr>
                 @endforeach
             </tbody>
@@ -73,24 +73,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        // on modal show edit
-        $(".btn-edit").click(function() {
-            var index = $(this).val();
-            var row = $(this).closest("tr")
-            var id = row.find("#id").text();
-            var qty = row.find("#qty").text();
-            var harga = row.find("#harga").text();
-            var status = row.find("#status").text();
-
-            console.log(id)
-            $('#edit-id').val(id);
-            $('#edit-harga').val(harga.substring(4, harga.length));
-            $('#edit-qty').val(qty.substring(0, qty.length - 3));
-            $('#edit-status').val(status);
-        });
-
-    })
-</script>
 @endsection

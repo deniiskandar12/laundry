@@ -33,7 +33,7 @@
                     <td class="col-3">
                         <form action="{{ route('verifikasi_pembayaran')}}" method="post" class="d-inline">
                             @csrf
-                            <input type="hidden" name="orderId" value="{{$confirmation->orderId}}">
+                            <input required type="hidden" name="orderId" value="{{$confirmation->orderId}}">
                             <button type="submit" class="btn btn-success btn-sm">Verifikasi</button>
                         </form>
                         <form action="{{ route('delete_pembayaran') }}" method="POST" class="d-inline">

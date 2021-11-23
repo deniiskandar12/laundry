@@ -19,7 +19,7 @@ class AuthController extends Controller
             session(['id' => $user->id]);
             session(['role' => $user->role]);
             if ($user->role == 'admin')
-                return redirect('admin/dashboard')->withSuccess('Login Berhasil');
+                return redirect('admin/data-pesanan')->withSuccess('Login Berhasil');
             else
                 return redirect('user/dashboard')->withSuccess('Login Berhasil');
         }

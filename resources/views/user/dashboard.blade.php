@@ -32,27 +32,13 @@
           <form action="{{route('add_order')}}" method="post">
             @csrf
             <div class="modal-body">
-              <!-- pesan nama -->
-              <!-- <div class="form-floating">
-              <textarea class="form-control" placeholder="Nama" id="pesan_nama"></textarea>
-              <label for="pesan_nama">Nama</label>
-            </div> -->
-              <!-- pesan alamat -->
               <hr>
               <div class="form-floating">
-                <textarea name="alamat" class="form-control" placeholder="Alamat" id="pesan_alamat"></textarea>
+                <textarea required name="alamat" class="form-control" placeholder="Alamat" id="pesan_alamat"></textarea>
                 <label for="pesan_alamat">Alamat</label>
               </div>
-              <!-- pesan no.hp -->
-              <!-- <hr>
-            <div class="form-floating">
-              <textarea class="form-control" placeholder="Nomor" id="pesan_nomor"></textarea>
-              <label for="pesan_nomor">Nomor Telepon</label>
-            </div>
-            <hr> -->
-              <!-- jenis cucian -->
               <p>Paket Cucian Kamu</p>
-              <select class="form-select" aria-label="jenis_cucian_select" name="jenis">
+              <select required class="form-select" aria-label="jenis_cucian_select" name="jenis">
                 <option value="Cuci Setrika">Cuci Setrika</option>
                 <option value="Cuci Biasa">Cuci Biasa</option>
               </select>
@@ -100,10 +86,10 @@
               <input type="hidden" name="id" id="bayar-id">
               <p>No Rekening: 6666666 a/n Greg Nwokolo (BSI)</p>
               <div class="input-group mb-3">
-                <input type="file" class="form-control" id="upload_bukti" name="file">
+                <input required type="file" class="form-control" id="upload_bukti" name="file">
                 <label class="input-group-text" for="upload_bukti">Unggah</label>
               </div>
-              <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="review" style="height: 10em"></textarea>
+              <textarea required name="keterangan" class="form-control" placeholder="Keterangan" id="review" style="height: 10em"></textarea>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
@@ -143,7 +129,7 @@
                 <p selected>Berapa Nilai Kami?</p>
                 <div class="col-2">
                   <!-- 5 star range -->
-                  <select class="form-select" aria-label="5 star select" name="nilai">
+                  <select required class="form-select" aria-label="5 star select" name="nilai">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -157,7 +143,7 @@
               <hr>
               <!-- review -->
               <div class="form-floating">
-                <textarea name="tanggapan" class="form-control" placeholder="Review" id="review" style="height: 10em"></textarea>
+                <textarea required name="tanggapan" class="form-control" placeholder="Review" id="review" style="height: 10em"></textarea>
                 <label for="review">Tulis Review Kamu</label>
               </div>
             </div>

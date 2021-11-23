@@ -78,7 +78,7 @@
                             <input id="edit-qty" type="number" class="form-control mb-4" name="qty" placeholder="Berat..." required>
                             <input id="edit-harga" type="number" class="form-control mb-4" name="harga" placeholder="Harga..." required>
                             <p>Status</p>
-                            <select id="edit-status" class="form-select" aria-label="jenis_cucian_select" name="status">
+                            <select id="edit-status" class="form-select" aria-label="jenis_cucian_select" name="status" required>
                                 <option value="Dihitung">Dihitung</option>
                                 <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
                                 <option value="Dikerjakan">Dikerjakan</option>

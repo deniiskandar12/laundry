@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -17,14 +18,19 @@ class OrderController extends Controller
 
         return view('admin/data_pesanan', ['orders' => $orders, "title" => "Data Pesanan"]);
     }
-    
+
     public function index_laporan()
     {
         $report = DB::table('orders')
-        ->select(DB::raw('MONTH(tanggal)'),DB::raw('SUM(SUM(harga)) OVER (PARTITION BY Year(tanggal), MONTH(tanggal))'))
-        ->groupBy('tanggal')
-        ->orderBy('tanggal','ASC')
-        ->get();
+            ->select(DB::raw('MONTH(tanggal) month'), DB::raw('SUM(harga) harga'))
+            ->groupby('month')
+            ->get();
+
+        foreach ($report as $rep) {
+            $dateObj   = DateTime::createFromFormat('!m', $rep->month);
+            $rep->month = $dateObj->format('F');
+        }
+
         return view('admin/laporan_penjualan', ['reports' => $report, "title" => "Laporan Penjualan"]);
     }
 

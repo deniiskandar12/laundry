@@ -33,10 +33,10 @@
                     <div class="modal-body">
                         <form action="{{ route('add_user') }}" method="POST">
                             @csrf
-                            <input type="text" class="form-control mb-4" name="nama" placeholder="Nama Lengkap..." required>
-                            <input type="number" class="form-control mb-4" name="no_hp" placeholder="Nomor Handphone..." required>
-                            <input type="text" class="form-control mb-4" name="username" placeholder="Username..." required>
-                            <input type="password" class="form-control mb-4" name="password" placeholder="Password..." required>
+                            <input required type="text" class="form-control mb-4" name="nama" placeholder="Nama Lengkap..." required>
+                            <input required type="number" class="form-control mb-4" name="no_hp" placeholder="Nomor Handphone..." required>
+                            <input required type="text" class="form-control mb-4" name="username" placeholder="Username..." required>
+                            <input required type="password" class="form-control mb-4" name="password" placeholder="Password..." required>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
